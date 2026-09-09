@@ -137,3 +137,26 @@ Content-Type: application/json
     "status": "Confirmed",
     "notes": "FINAL PUT CONFLICT TEST"
 }
+### Update Appointment
+PUT {{levorn_api_HostAddress}}/api/appointments/2
+Content-Type: application/json
+
+{
+    "customerId": 2,
+    "startTime": "2026-09-15T16:00:00",
+    "endTime": "2026-09-15T16:30:00",
+    "status": "Confirmed",
+    "notes": "DTO ayrıştırma testi"
+}
+### Update Appointment - Normal Test
+
+PUT {{levorn_api_HostAddress}}/api/appointments/2
+Content-Type: application/json
+
+{
+    "customerId": 2,
+    "startTime": "2026-09-15T18:00:00",
+    "endTime": "2026-09-15T18:30:00",
+    "status": "Confirmed",
+    "notes": "DTO ayrıştırma testi"
+}

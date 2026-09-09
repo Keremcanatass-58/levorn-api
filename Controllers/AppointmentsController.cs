@@ -92,7 +92,7 @@ public class AppointmentsController : ControllerBase
         return Ok(appointment);
     }
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, CreateAppointmentDto dto)
+    public async Task<IActionResult> Update(int id, UpdateAppointmentDto dto)
     {
         var appointment = await _context.Appointments.FindAsync(id);
 
