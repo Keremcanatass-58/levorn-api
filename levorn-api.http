@@ -11,3 +11,16 @@ Content-Type: application/json
     "email": "kerem@example.com",
     "notes": "LEVORN test müşterisi"
 }
+### Update Customer
+PUT {{levorn_api_HostAddress}}/api/customers/1
+Content-Type: application/json
+
+{
+    "firstName": "Keremcan",
+    "lastName": "Ataş",
+    "phone": "05551112233",
+    "email": "keremcan@example.com",
+    "notes": "LEVORN güncelleme testi"
+}
+### Delete Customer
+DELETE {{levorn_api_HostAddress}}/api/customers/1
