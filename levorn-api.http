@@ -160,3 +160,39 @@ Content-Type: application/json
     "status": "Confirmed",
     "notes": "DTO ayrıştırma testi"
 }
+###
+
+### Create Service
+POST {{levorn_api_HostAddress}}/api/services
+Content-Type: application/json
+
+{
+    "name": "Saç + Sakal",
+    "description": "Saç kesimi ve sakal düzenleme",
+    "durationMinutes": 45,
+    "price": 600
+}
+
+###
+
+### Get All Services
+GET {{levorn_api_HostAddress}}/api/services
+Accept: application/json
+###
+
+### Update Service
+PUT {{levorn_api_HostAddress}}/api/services/1
+Content-Type: application/json
+
+{
+    "name": "Saç + Sakal Premium",
+    "description": "Premium saç kesimi ve sakal düzenleme",
+    "durationMinutes": 60,
+    "price": 750,
+    "isActive": true
+}
+###
+
+### Deactivate Service
+PATCH {{levorn_api_HostAddress}}/api/services/1/deactivate
+Accept: application/json
