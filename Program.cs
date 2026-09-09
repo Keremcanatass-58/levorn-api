@@ -10,6 +10,7 @@ builder.Services.AddDbContext<LevornDbContext>(options =>
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
+app.UseExceptionHandler("/error");
 
 if (app.Environment.IsDevelopment())
 {
@@ -18,6 +19,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.MapControllers();
+app.MapGet("/error", () =>
+{
+    return Results.Problem(
+        title: "An unexpected error occurred.",
+        statusCode: StatusCodes.Status500InternalServerError
+    );
+});
 
 app.MapGet("/", () =>
 {

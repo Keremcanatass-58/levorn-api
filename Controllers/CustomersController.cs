@@ -58,7 +58,7 @@ public class CustomersController : ControllerBase
         return Ok(customer);
     }
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, CreateCustomerDto dto)
+    public async Task<IActionResult> Update(int id, UpdateCustomerDto dto)
     {
         var customer = await _context.Customers.FindAsync(id);
 

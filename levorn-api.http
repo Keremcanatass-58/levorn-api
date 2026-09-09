@@ -1,26 +1,25 @@
 @levorn_api_HostAddress = http://localhost:5019
 
+### Health Check
+GET {{levorn_api_HostAddress}}/api/health
+Accept: application/json
+
+###
+
+### Get All Customers
+GET {{levorn_api_HostAddress}}/api/customers
+Accept: application/json
+
+###
+
 ### Create Customer
 POST {{levorn_api_HostAddress}}/api/customers
 Content-Type: application/json
 
 {
-    "firstName": "Kerem",
-    "lastName": "Ataş",
-    "phone": "05550000000",
-    "email": "kerem@example.com",
-    "notes": "LEVORN test müşterisi"
-}
-### Update Customer
-PUT {{levorn_api_HostAddress}}/api/customers/1
-Content-Type: application/json
-
-{
-    "firstName": "Keremcan",
-    "lastName": "Ataş",
+    "firstName": "Ahmet",
+    "lastName": "Yılmaz",
     "phone": "05551112233",
-    "email": "keremcan@example.com",
-    "notes": "LEVORN güncelleme testi"
+    "email": "ahmet@example.com",
+    "notes": "Test müşterisi"
 }
-### Delete Customer
-DELETE {{levorn_api_HostAddress}}/api/customers/1

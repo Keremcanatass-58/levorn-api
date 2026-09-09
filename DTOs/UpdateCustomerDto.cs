@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Levorn.Api.DTOs;
 
-public class CreateCustomerDto
+public class UpdateCustomerDto
 {
     [Required(ErrorMessage = "First name is required.")]
     [StringLength(50, MinimumLength = 2)]
@@ -19,6 +19,6 @@ public class CreateCustomerDto
     [EmailAddress(ErrorMessage = "Invalid email address.")]
     public string? Email { get; set; }
 
-    [StringLength(500, ErrorMessage = "Notes cannot exceed 500 characters.")]
+    [StringLength(500)]
     public string? Notes { get; set; }
 }
