@@ -52,16 +52,16 @@ Accept: application/json
 
 ###
 
-### Update Appointment
-PUT {{levorn_api_HostAddress}}/api/appointments/1
+### Update Appointment - Conflict Test
+PUT {{levorn_api_HostAddress}}/api/appointments/2
 Content-Type: application/json
 
 {
     "customerId": 2,
-    "startTime": "2026-09-15T16:00:00",
-    "endTime": "2026-09-15T16:30:00",
+    "startTime": "2026-09-15T14:45:00",
+    "endTime": "2026-09-15T15:15:00",
     "status": "Confirmed",
-    "notes": "Randevu saati güncellendi"
+    "notes": "PUT çakışma testi"
 }
 
 ###
@@ -114,4 +114,26 @@ Content-Type: application/json
     "endTime": "2026-09-15T14:30:00",
     "status": "Pending",
     "notes": "Geçersiz saat testi"
+}
+### Create Second Appointment For PUT Conflict Test
+POST {{levorn_api_HostAddress}}/api/appointments
+Content-Type: application/json
+
+{
+    "customerId": 2,
+    "startTime": "2026-09-15T16:00:00",
+    "endTime": "2026-09-15T17:00:00",
+    "status": "Pending",
+    "notes": "PUT conflict ana randevusu"
+}
+### FINAL PUT CONFLICT TEST
+PUT {{levorn_api_HostAddress}}/api/appointments/2
+Content-Type: application/json
+
+{
+    "customerId": 2,
+    "startTime": "2026-09-15T16:30:00",
+    "endTime": "2026-09-15T17:30:00",
+    "status": "Confirmed",
+    "notes": "FINAL PUT CONFLICT TEST"
 }
