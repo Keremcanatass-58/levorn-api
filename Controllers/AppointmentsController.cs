@@ -30,6 +30,27 @@ public class AppointmentsController : ControllerBase
             });
         }
 
+        if (dto.EndTime <= dto.StartTime)
+        {
+            return BadRequest(new
+            {
+                message = "End time must be after start time."
+            });
+        }
+
+        var hasConflict = await _context.Appointments
+            .AnyAsync(a =>
+                dto.StartTime < a.EndTime &&
+                dto.EndTime > a.StartTime);
+
+        if (hasConflict)
+        {
+            return Conflict(new
+            {
+                message = "Selected time slot is already booked."
+            });
+        }
+
         var appointment = new Appointment
         {
             CustomerId = dto.CustomerId,

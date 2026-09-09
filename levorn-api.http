@@ -23,6 +23,7 @@ Content-Type: application/json
     "email": "ahmet@example.com",
     "notes": "Test müşterisi"
 }
+
 ###
 
 ### Create Appointment
@@ -36,12 +37,21 @@ Content-Type: application/json
     "status": "Pending",
     "notes": "Saç kesimi"
 }
+
+###
+
 ### Get All Appointments
 GET {{levorn_api_HostAddress}}/api/appointments
 Accept: application/json
+
+###
+
 ### Get Appointment By Id
 GET {{levorn_api_HostAddress}}/api/appointments/1
 Accept: application/json
+
+###
+
 ### Update Appointment
 PUT {{levorn_api_HostAddress}}/api/appointments/1
 Content-Type: application/json
@@ -53,7 +63,55 @@ Content-Type: application/json
     "status": "Confirmed",
     "notes": "Randevu saati güncellendi"
 }
+
+###
+
 ### Delete Appointment
 DELETE {{levorn_api_HostAddress}}/api/appointments/1
+
+###
+
 ### Verify Deleted Appointment
 GET {{levorn_api_HostAddress}}/api/appointments/1
+
+###
+
+### Create Base Appointment For Conflict Test
+POST {{levorn_api_HostAddress}}/api/appointments
+Content-Type: application/json
+
+{
+    "customerId": 2,
+    "startTime": "2026-09-15T14:30:00",
+    "endTime": "2026-09-15T15:00:00",
+    "status": "Pending",
+    "notes": "Çakışma ana randevusu"
+}
+
+###
+
+### Appointment Conflict Test
+POST {{levorn_api_HostAddress}}/api/appointments
+Content-Type: application/json
+
+{
+    "customerId": 2,
+    "startTime": "2026-09-15T14:45:00",
+    "endTime": "2026-09-15T15:15:00",
+    "status": "Pending",
+    "notes": "Çakışma testi"
+}
+
+###
+
+### Invalid Time Test
+POST {{levorn_api_HostAddress}}/api/appointments
+Content-Type: application/json
+
+{
+    "customerId": 2,
+    "startTime": "2026-09-15T15:00:00",
+    "endTime": "2026-09-15T14:30:00",
+    "status": "Pending",
+    "notes": "Geçersiz saat testi"
+}
